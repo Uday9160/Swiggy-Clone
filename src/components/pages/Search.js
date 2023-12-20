@@ -44,7 +44,7 @@ const Search = () => {
     }, [searchText])
 
     const getSearchSuggestions = async () => {
-        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/search/suggest?lat=12.9351929&lng=77.62448069999999&str=${searchText}&trackingId=undefined`);
+        const data = await fetch(`https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Fsearch%2Fsuggest%3Flat%3D12.9351929%26lng%3D77.62448069999999%26str%3D${searchText}%26trackingId`);
 
         const json = await data.json();
         setSuggestions(json?.data?.suggestions)
@@ -57,7 +57,7 @@ const Search = () => {
     }, [searchName])
 
     const getSearchByRes = async () => {
-        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9351929&lng=77.62448069999999&str=${searchName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=38b9ae9b-d382-027b-6a60-758c2e982c72&metaData=%7B%22type%22%3A%22DISH%22%2C%22data%22%3A%7B%22vegIdentifier%22%3A%22NONVEG%22%2C%22cloudinaryId%22%3A%22v8pibyuukeil23h3xqg4%22%2C%22dishFamilyId%22%3A%22846613%22%2C%22dishTypeId%22%3A%22847329%22%2C%22dishFamilyIds%22%3A%5B%22846613%22%5D%2C%22dishTypeIds%22%3A%5B%22847329%22%5D%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Dish%22%7D`)
+        const data = await fetch(`https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Fsearch%2Fv3%3Flat%3D12.9351929%26lng%3D77.62448069999999%26str%3D${searchName}%26trackingId%3D6fc61009-1efb-648d-79db-c0e7563eaaa6%26submitAction%3DENTER%26queryUniqueId%3Da525b536-b346-f2da-c968-3e3a60d24ab1`)
         const json = await data.json();
         if (isDish === 'RESTAURANT') {
             setSearchByRes(json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT)
@@ -193,27 +193,18 @@ const Search = () => {
                                 ) : (
                                     <div>
                                         <div className='grid grid-cols-1 md:grid-cols-2 pt-4'>
-                                        {
-                                            searchByRes.cards && (() => {
-                                                const seen = new Set();
-                                                return searchByRes.cards
-                                                .slice(1)
-                                                .filter((card) => {
+                                            {searchByRes.cards && searchByRes.cards
+                                                .slice(1) // Exclude the first item
+                                                .filter((card, index, self) => {
+                                                    // Filter out duplicates based on restaurant IDs
                                                     const id = card?.card?.card?.restaurant?.info?.id;
-                                                    if (id && !seen.has(id)) {
-                                                    seen.add(id);
-                                                    return true;
-                                                    }
-                                                    return false;
-                                                })
-                                                .map((res) => (
+                                                    return id && index === self.findIndex((c) => c?.card?.card?.restaurant?.info?.id === id);
+                                                }).map((res) => (
                                                     <Link className='pr-2 pb-2' key={res?.card?.card?.restaurant?.info?.id}
-                                                    to={"/restraunt/" + res?.card?.card?.restaurant?.info?.id}>
-                                                    <SearchedRestaurentCard data={res?.card?.card?.restaurant?.info} />
+                                                        to={"/restraunt/" + res?.card?.card?.restaurant?.info?.id}>
+                                                        <SearchedRestaurentCard data={res?.card?.card?.restaurant?.info} />
                                                     </Link>
-                                                ));
-                                            })()
-                                        }
+                                                ))}
                                         </div>
                                     </div>
                                 )}
