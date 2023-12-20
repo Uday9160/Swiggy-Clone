@@ -10,15 +10,20 @@ const SearchedRestaurentCard = ({data}) => {
             </div>
             <div className='flex pl-4 flex-col justify-center min-h-[108px]'>
                 <p className='text-[#3e4152] font-semibold text-ellipsis overflow-hidden whitespace-nowrap'>{name}</p>
-                <div className='flex text-sm text-[#696b79] font-medium mt-[6px]'>
-                    <div className="flex space-x-1">
+                <div className='flex text-sm text-[#696b79] font-medium mt-[6px] items-center space-x-2'>
+                    <div className="flex space-x-1 items-center">
                         <span>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" role="img" aria-hidden="true" stopColor="rgba(2, 6, 12, 0.92)" fillcolor="rgba(2, 6, 12, 0.92)"><circle cx="10" cy="10" r="9" fill="url(#StoreRating20_svg__paint0_linear_32982_71567)"></circle><path d="M10.0816 12.865C10.0312 12.8353 9.96876 12.8353 9.91839 12.865L7.31647 14.3968C6.93482 14.6214 6.47106 14.2757 6.57745 13.8458L7.27568 11.0245C7.29055 10.9644 7.26965 10.9012 7.22195 10.8618L4.95521 8.99028C4.60833 8.70388 4.78653 8.14085 5.23502 8.10619L8.23448 7.87442C8.29403 7.86982 8.34612 7.83261 8.36979 7.77777L9.54092 5.06385C9.71462 4.66132 10.2854 4.66132 10.4591 5.06385L11.6302 7.77777C11.6539 7.83261 11.706 7.86982 11.7655 7.87442L14.765 8.10619C15.2135 8.14085 15.3917 8.70388 15.0448 8.99028L12.7781 10.8618C12.7303 10.9012 12.7095 10.9644 12.7243 11.0245L13.4225 13.8458C13.5289 14.2757 13.0652 14.6214 12.6835 14.3968L10.0816 12.865Z" fill="white"></path><defs><linearGradient id="StoreRating20_svg__paint0_linear_32982_71567" x1="10" y1="1" x2="10" y2="19" gradientUnits="userSpaceOnUse"><stop stopColor="#21973B"></stop><stop offset="1" stopColor="#128540"></stop></linearGradient></defs></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#696b79" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-[20px] h-[15px]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                            </svg>
+
                         </span>
                         <p>{avgRating}</p>
                     </div> 
-                    <span className='pl-2'>{sla.slaString}</span> 
-                    <span className='pl-2'>{costForTwoMessage}</span>
+                    <div className="w-[2px] h-1 bg-[#696b79] rounded-full"></div>
+                    <span>{sla.slaString}</span> 
+                    <div className="w-[2px] h-1 bg-[#696b79] rounded-full"></div>
+                    <span>{costForTwoMessage}</span>
                 </div>
                 <p className='mt-1 text-sm line-clamp-1 text-[#93959f]'>{cuisines.join(", ")}</p>
             </div>
