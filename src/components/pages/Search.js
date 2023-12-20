@@ -26,7 +26,7 @@ const Search = () => {
     }, [])
 
     const getSearchItemFoods = async () => {
-        const data = await fetch('https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=12.9351929&lng=77.62448069999999');
+        const data = await fetch('https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Flanding%2FPRE_SEARCH%3Flat%3D12.9351929%26lng%3D77.62448069999999');
         const json = await data.json();
         setFood(json?.data?.cards[1]?.card?.card?.imageGridCards?.info)
     }
