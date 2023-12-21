@@ -47,8 +47,8 @@ const RestrauntMenu = () => {
 
 
     return (
-        <div className=" w-full mt-9">
-           <div className="w-6/12 mx-auto">
+        <div className=" w-full mt-9 px-4">
+           <div className="lg:w-6/12 sm:w-10/12 mx-auto">
                 <div className="flex justify-between relative">
                     <div>
                         <p className="text-[#282c3f] text-[20px] font-semibold leading-tight">{name}</p>
@@ -76,7 +76,7 @@ const RestrauntMenu = () => {
 
                 <div className="flex gap-2 items-center">
                     <img className="w-[18px] h-[18px]" src={BICYCLE}/>
-                    <span className="text-[#7e808c] text-[15px]">
+                    <span className="text-[#7e808c] text-sm">
                         {resMenu?.data?.cards[0]?.card?.card?.info?.feeDetails.message}
                     </span>  
                 </div>
