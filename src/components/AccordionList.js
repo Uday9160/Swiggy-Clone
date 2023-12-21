@@ -18,22 +18,22 @@ const AccordionList = ({items}) => {
         setReadMore(!readMore);
     }
 
-    // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    // useEffect(() => {
-    //     const handleResize = () => setWindowWidth(window.innerWidth);
-    //     window.addEventListener("resize", handleResize);
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
 
-    //     // Cleanup function to remove the event listener
-    //     return () => window.removeEventListener("resize", handleResize);
-    // }, []);
+        // Cleanup function to remove the event listener
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
    
-    return window.innerWidth <= 768 ? (
-        <div className="w-full mx-auto">
+    return windowWidth <= 768 ? (
+        <div className=" mx-auto">
             {
                 items.map((item) => (
-                    <div className="border-b-2 space-y-2 flex  justify-between py-4 mx-2 ">
+                    <div className="border-b-2 space-y-2 flex w-full  justify-between py-4 mx-2 ">
                         <div className="space-y-2 w-[60%]">
                             <h1 className="font-bold text-base text-[#02060CBF]">{item.card.info.name}</h1>
                             <p className="font-bold text-[#02060CEB] text-[16px]">₹ {item.card.info.price ? item.card.info.price / 100 : item.card.info.defaultPrice/100}</p>
