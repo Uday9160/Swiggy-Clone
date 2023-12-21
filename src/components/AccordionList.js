@@ -30,7 +30,7 @@ const AccordionList = ({items}) => {
 
    
     return windowWidth <= 768 ? (
-        <div className=" mx-auto">
+        <div>
             {
                 items.map((item) => (
                     <div className="border-b-2 space-y-2 flex w-full  justify-between py-4 mx-2 ">
@@ -68,7 +68,7 @@ const AccordionList = ({items}) => {
             }
         </div>
     ) :(
-            <div className="">
+            <div>
                 {
                     items.map((item) =>(
                         <div className="border-b-2 flex w-full py-7" key={item.card.info.id}>
